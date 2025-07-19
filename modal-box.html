@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+
+   <title>Modal</title>
+
+   <style>
+      *, *::before, *::after {
+         padding: 0;
+         margin: 0;
+         box-sizing: border-box;
+      }
+
+      :root {
+         font-family: Roboto, sans-serif;
+         font-size: 62.5%;
+      }
+
+      body {
+         font-size: 1.4rem;
+         height: 100svh;
+         position: relative;
+         padding: 1rem;
+      }
+
+      #open {
+         background-color: transparent;
+         border: solid lightgray 2px;
+         border-radius: 10px;
+         display: block;
+         padding: 1rem 5rem;
+      }
+
+      .modal-wrapper {
+         background-color: rgba(0, 0, 0, 0.2);
+         display: none;
+         place-content: center;
+         position: absolute;
+         left: 0;
+         right: 0;
+         top: 0;
+         bottom: 0;
+      }
+
+      .modal-box {
+         background-color: #fff;
+         border: 1px solid lightgray;
+         border-radius: 10px;
+         height: 15rem;
+         width: 25rem;
+         position: relative;
+         display: grid;
+         place-content: center;
+         padding: 0 1rem;
+         animation-name: slide-down;
+         animation-duration: 500ms;
+      }
+
+      #close {
+         background-color: transparent;
+         border: 0;
+         font-size: 3rem;
+         position: absolute;
+         top: 10px;
+         right: 15px;
+      }
+
+      .modal-box #close:hover {
+         color: red;
+      }
+
+      .modal-box p {
+         text-align: center;
+         margin: 2rem 0;
+      }
+
+      #ok {
+         background-color: mediumseagreen;
+         color: #fff;
+         border: 0;
+         border-radius: 5px;
+         padding: 1rem;
+         place-self: center;
+         width: 10rem;
+      }
+
+      #ok:hover {
+         background-color: green;
+      }
+
+      /* ANIMATION */
+      @keyframes slide-down {
+         from {
+            transform: translatey(-300%);
+         }
+      }
+   </style>
+</head>
+<body>
+   <div>
+      <h2>A simple Modal Box</h2>
+      A simple modal box with HTML, CSS and JAVASCRIPT
+      <button id="open">Click to open</button>
+   </div>
+   <div class="modal-wrapper">
+      <div class="modal-box" onclick="">
+         <button id="close">&times;</button>
+         <p>I am a Modal Box!, press the "&times;", "ok" or outside the modal to close me</p>
+         <button id="ok">ok</button>
+      </div>
+   </div>
+</body>
+<script>
+   const modalContainer = document.querySelector(".modal-wrapper");
+   const modalBox = document.querySelector(".modal-box");
+
+   modalContainer.addEventListener("click", (event)=> {
+      //(*) prevent closing the modal box if itself is click or his children nodes
+      if (event.target.classList.contains("modal-box") || event.target.parentElement === modalBox) return;
+      modalContainer.style.display = "none";
+   })
+
+   document.addEventListener("click", (event)=> {
+      const ID = event.target.id;
+      if (ID) {
+         //override  for buttons (*)
+         if (ID === "open") modalContainer.style.display = "grid";
+         if (ID === "close" || ID === "ok") modalContainer.style.display = "none";
+         return;
+      }
+   });
+</script>
+</html>
