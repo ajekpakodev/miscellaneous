@@ -1,0 +1,101 @@
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Simple Card</title>
+   <style>
+      body {
+          display:grid;
+          height:100vh;
+      }
+      .card {
+         --dark-cerulean:hsl(from #1D497E h s calc(l + 10));
+         width:100%;
+         height:max-content;
+         border-radius:5px;
+         display:grid;
+         grid-template-columns:1fr 2fr;
+         box-shadow:0 3px 10px hsl(0 0% 70%);
+         overflow:hidden;
+         margin:auto;
+       }
+       
+       .card-item:nth-child(1) {
+          overflow:hidden;
+       }
+       
+       .card-item:nth-child(1) * {
+          width:200%;
+          height:100%;
+       }
+       
+       
+       .card-item:nth-child(2) {
+          padding:25px;
+          display:grid;
+       }
+       
+       .card-title {
+          color:var(--dark-cerulean);
+          font-size:32px;
+          font-weight:700;
+          line-height:1;
+          padding-top:20px;
+       }
+       
+       p {
+          color:hsl(0 0% 50%);
+          line-height:1.7;
+          padding-bottom:10px;
+       }
+       
+       button {
+          
+          background-color:var(--dark-cerulean);
+          color:white;
+          border:0;
+          border-radius:5px;
+          margin:auto;
+          padding:10px 15px;
+          box-shadow: 0 3px 5px hsl(0 0% 50%);
+       }
+       
+       
+       @media (min-width:600px) {
+          .card {
+             width:400px;
+          }
+       }
+       
+       @media (min-width:900px) {
+          .card {
+             width:700px;
+          }
+       }
+       
+       
+       @media (min-width:1200px) {
+          .card {
+             width:80%;
+          }
+       }
+   </style>
+</head>
+<body>
+   <div class="card">
+      <div class="card-item">
+         <img src="assets/img/jinx.jpg">
+      </div>
+      <div class="card-item">
+          <p class="date">
+            <time>10:00AM</time>,
+            <date>2 August 2025</date>
+         </p>
+         <div class="card-title">Jinx Annual Event</div>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra in elit quis lacinia. Donec varius, mi scelerisque condimentum placerat, purus massa varius purus, et pharetra dui nisl eget purus. </p>
+        
+         <button>Book Event</button>
+      </div>
+   </div>
+</body>
+</html>
